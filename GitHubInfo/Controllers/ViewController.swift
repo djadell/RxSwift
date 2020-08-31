@@ -31,13 +31,16 @@ class ViewController: UIViewController {
         }
         .disposed(by: disposeBag)
         
+        searchBar.rx.text.orEmpty.bind(to: viewModel.searchText).disposed(by: disposeBag)
+        
+        viewModel.data.asDriver().map {"\($0.count) Repositories"}.drive(navigationItem.rx.title).disposed(by: disposeBag)
     }
     
     func configureSearchController() {
         searchController.obscuresBackgroundDuringPresentation = false
         searchBar.showsCancelButton = true
-        searchBar.text = "NavdeepSinghh"
-        searchBar.placeholder = "Enter GitHub ID, e.g., \"NavdeepSinghh\""
+        searchBar.text = ""
+        searchBar.placeholder = "Enter GitHub ID, ex: \"djadell\""
         tableView.tableHeaderView = searchController.searchBar
         definesPresentationContext = true
     }
