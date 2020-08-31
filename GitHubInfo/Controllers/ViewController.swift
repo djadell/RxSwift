@@ -55,8 +55,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        viewModel = ViewModel()
-        print("Reset")
+//        print("Reset")
     }
 }
 
